@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtualenv
+venv/
+env/
+ENV/
+.venv/
+.pyenv/
+
+# VS Code
+.vscode/
+
+# Logs
+logs/
+*.log
+
+# SQLite database
+db.sqlite3
