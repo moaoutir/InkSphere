@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 from django.core.management.commands.runserver import Command
+import os
 Command.default_port = "9090"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,6 +32,11 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+NEW_ADMIN_APPS = [
+    'jazzmin',
+    'admin_interface',
+    'colorfield',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -42,6 +48,8 @@ INSTALLED_APPS = [
 
     'blog',
 ]
+
+INSTALLED_APPS = NEW_ADMIN_APPS + INSTALLED_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -103,6 +111,28 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# admin panel
+JAZZMIN_UI_TWEAKS = {
+    "theme": "litera",
+    "dark_mode_theme": "superhero",
+}
+JAZZMIN_SETTINGS = {
+    # "login_logo": "images/logo_drc.png",
+    # "site_logo" : "images/favicon-60.ico",
+    "site_title": "InkSphere Admin Portal",
+    "site_header": "InkSphere Administration",
+    "welcome_sign": "Welcome to InkSphere Administration",
+    "copyright": "InkSphere Admin Portal",
+    "site_brand": "InkSphere Admin Portal",
+    "good_bye_sign": "You have been successfully logged out",
+   "custom_css": "css/custom_admin.css",
+    # "related_modal_active": True,
+
+}
+
+
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
@@ -120,7 +150,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

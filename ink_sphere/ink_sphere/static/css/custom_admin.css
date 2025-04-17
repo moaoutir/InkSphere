@@ -1,0 +1,15 @@
+/* Change sidebar background */
+.main-sidebar {
+    background-color: #060664 !important;
+}
+
+/* Change sidebar width */
+.sidebar-mini.sidebar-collapse .main-sidebar {
+    width: 220px !important;
+}
+
+/* Adjust icon + text size */
+.nav-sidebar .nav-link {
+    font-size: 15px;
+    padding: 10px 15px;
+}
