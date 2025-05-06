@@ -11,7 +11,7 @@
           </a>
         </h5>
         <p class="card-subtitle mb-2 text-muted small">
-          By {{ post.author }} &bull; {{ post.date_posted }}
+          By {{ post.author }} &bull; {{ post.date_posted|date:"F j, Y" }}
         </p>
         <p class="card-text flex-grow-1">
           {{ post.content|truncatewords:50 }}
