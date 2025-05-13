@@ -40,14 +40,15 @@
         </ul>
         <ul class="navbar-nav">
           {% if user.is_authenticated %}
-            <li class="nav-item">
-              <form method="POST" action="{% url 'logout' %}" class="d-inline">
+            <li class="nav-item d-flex align-items-center">
+              <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+              <form method="POST" action="{% url 'logout' %}" class="d-inline ms-2">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-link nav-link" style="display:inline; padding: 0; border: none; background: none;">
+                <button type="submit" class="btn btn-link nav-link" style="padding: 0; border: none; background: none;">
                   Logout
                 </button>
               </form>
-          </li>
+            </li>
           {% else %}
             <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
             <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>

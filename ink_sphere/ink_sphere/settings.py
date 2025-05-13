@@ -130,7 +130,7 @@ JAZZMIN_SETTINGS = {
     "site_header": "InkSphere Administration",
     "welcome_sign": "Welcome to InkSphere Administration",
     "copyright": "InkSphere Admin Portal",
-    "site_brand": "InkSphere Admin Portal",
+    "site_brand": "Admin Portal",
     "good_bye_sign": "You have been successfully logged out",
    "custom_css": "css/custom_admin.css",
     # "related_modal_active": True,
@@ -168,3 +168,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'page-blog'
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'login'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
