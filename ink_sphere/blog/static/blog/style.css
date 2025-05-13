@@ -7,7 +7,7 @@ body {
 /* Hero Banner */
 .hero-banner {
   position: relative;
-  min-height: 300px;
+  min-height: 150px;
   background: url('../images/hero.jpg') center/cover no-repeat;
 }
 .hero-banner .overlay {
