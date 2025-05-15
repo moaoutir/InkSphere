@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="container py-5">
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <div class="d-flex align-items-center mb-4">
+        <img src="{{ object.author.profile.image.url }}" alt="Avatar" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+        <div>
+          <h5 class="mb-0">{{ object.author }}</h5>
+          <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+        </div>
+        {% if object.author == user %}
+        <div class="ms-auto">
+          <a href="{% url 'post-update' object.id %}" class="btn btn-outline-secondary btn-sm me-2 text-decoration-none">✏️ Edit</a>
+          <a href="{% url 'post-delete' object.id %}" class="btn btn-outline-danger btn-sm ">🗑️ Delete</a>
+        </div>
+        {% endif %}
+      </div>
+
+      <h2 class="card-title fw-bold">{{ object.title }}</h2>
+      <hr>
+      <p class="card-text fs-5" style="white-space: pre-line;">{{ object.content }}</p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

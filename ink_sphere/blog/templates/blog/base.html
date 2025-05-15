@@ -41,6 +41,7 @@
         <ul class="navbar-nav">
           {% if user.is_authenticated %}
             <li class="nav-item d-flex align-items-center">
+              <a class="nav-link" href="{% url 'post-create' %}">Add Post</a>
               <a class="nav-link" href="{% url 'profile' %}">Profile</a>
               <form method="POST" action="{% url 'logout' %}" class="d-inline ms-2">
                 {% csrf_token %}
