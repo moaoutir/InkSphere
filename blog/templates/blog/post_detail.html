@@ -12,7 +12,7 @@
         {% if object.author == user %}
         <div class="ms-auto">
           <a href="{% url 'post-update' object.id %}" class="btn btn-outline-secondary btn-sm me-2 text-decoration-none">✏️ Edit</a>
-          <a href="{% url 'post-delete' object.id %}" class="btn btn-outline-danger btn-sm ">🗑️ Delete</a>
+          <a href="{% url 'post-delete' object.id %}" class="btn btn-outline-danger btn-sm text-decoration-none">🗑️ Delete</a>
         </div>
         {% endif %}
       </div>

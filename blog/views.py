@@ -14,7 +14,7 @@ class PostListView(ListView):
     model = Post
     template_name = 'blog/post_list.html'  
     ordering = ['-date_posted']
-    # context_object_name = 'posts'
+    paginate_by = 2
     
 class PostDetailView(DetailView):
     model = Post
@@ -44,6 +44,10 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'content'] 
     template_name = 'blog/post_update.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
     def get_success_url(self):
         return reverse('page-blog')
