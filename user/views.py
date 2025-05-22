@@ -3,7 +3,22 @@ from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
 from .forms import UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.auth.forms import PasswordResetForm
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from django.contrib.auth.models import User
+from django.core.mail import EmailMultiAlternatives
 
+class CustomPasswordResetView(PasswordResetView):
+    template_name = 'user/reset_password.html'
+    html_email_template_name = 'user/password_reset_email.html' 
+    subject_template_name = 'user/password_reset_subject.txt'
+    
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
