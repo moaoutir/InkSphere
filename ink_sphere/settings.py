@@ -15,7 +15,7 @@ from django.core.management.commands.runserver import Command
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv('.env.local')
 Command.default_port = "9090"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,13 +26,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-z3w9=*!aeqa1e0=0ry=8)k3^n6vfgx@6904th(v(2jj4@lgw6b'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get('DEBUG', default=0))
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', "127.0.0.1").split(',')
+CSRF_TRUSTED_ORIGINS = os.environ.get('CSRF_TRUSTED_ORIGINS', "https://127.0.0.1").split(',')
 
 # Application definition
 NEW_ADMIN_APPS = [

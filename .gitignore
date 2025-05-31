@@ -4,6 +4,7 @@ __pycache__/
 
 # Virtualenv
 venv/
+venv_linux/
 env/
 ENV/
 .venv/
@@ -25,3 +26,6 @@ db.sqlite3
 
 # Media files 
 media/
+
+.env.local
+.env.prod
