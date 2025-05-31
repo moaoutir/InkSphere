@@ -1,0 +1,14 @@
+.git
+venv
+venv_linux
+*.pyc
+__pycache__/
+.venv/
+
+*.md
+
+*.log
+# db.sqlite3
+
+.vscode/
+.idea/
