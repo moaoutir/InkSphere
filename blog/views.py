@@ -53,5 +53,4 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         return reverse('page-blog')
 
 def about(request):
-    print(reverse('page-detail', kwargs={'pk': 1}))
     return render(request, 'blog/about.html', {'title': 'About'})
