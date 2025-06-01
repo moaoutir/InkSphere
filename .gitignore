@@ -29,3 +29,4 @@ media/
 
 .env.local
 .env.prod
+.env
