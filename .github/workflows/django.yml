@@ -28,6 +28,7 @@ jobs:
     - name: Check for unused imports with autoflake
       uses: creyD/autoflake_action@v1.1
       with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           options: --in-place --remove-all-unused-imports -r
         
     - name: Run black
