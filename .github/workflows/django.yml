@@ -25,8 +25,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         
-    - name: Run autoflake
-      run: autoflake --exit-zero --check --remove-unused-variables --remove-all-unused-imports -r .
+    - name: Check for unused imports with autoflake
+      run: autoflake --exit-zero --remove-unused-variables --remove-all-unused-imports -r .
         
     - name: Run black
       run: black --check .
