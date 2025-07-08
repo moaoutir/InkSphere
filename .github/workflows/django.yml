@@ -24,15 +24,16 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
+    - name: Run black
+      uses: psf/black@stable
         
     - name: Check for unused imports with autoflake
       uses: creyD/autoflake_action@v1.1
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           options: --in-place --remove-all-unused-imports -r
-        
-    - name: Run black
-      uses: psf/black@stable
         
     - name: Run flake8
       run: flake8 .
