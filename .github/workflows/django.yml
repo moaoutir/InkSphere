@@ -26,10 +26,12 @@ jobs:
         pip install -r requirements.txt
         
     - name: Check for unused imports with autoflake
-      run: autoflake --exit-zero --remove-unused-variables --remove-all-unused-imports -r .
+      uses: creyD/autoflake_action@v1.1
+      with:
+          options: --in-place --remove-all-unused-imports -r
         
     - name: Run black
-      run: black --check .
+      uses: psf/black@stable
         
     - name: Run flake8
       run: flake8 .
