@@ -26,6 +26,7 @@ class PostListView(ListView):
     ordering = ["-date_posted"]
     paginate_by = 5
 
+
 class UserPostListView(ListView):
     model = Post
     template_name = "blog/user_posts_list.html"
@@ -34,12 +35,13 @@ class UserPostListView(ListView):
     def get_queryset(self):
         user = User.objects.get(pk=self.kwargs["pk"])
         return Post.objects.filter(author=user).order_by("-date_posted")
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['author'] = User.objects.get(pk=self.kwargs['pk'])
+        context["author"] = User.objects.get(pk=self.kwargs["pk"])
         return context
-       
+
+
 class PostDetailView(DetailView):
     model = Post
     template_name = "blog/post_detail.html"
@@ -79,8 +81,10 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse("page-blog")
 
+
 from django.shortcuts import redirect, get_object_or_404
 from django.views import View
+
 # def subscribe(request, pk):
 #     if request.method == "POST":
 #         action = request.POST.get("action")
@@ -99,6 +103,7 @@ from django.views import View
 
 #         return redirect("post-user-list", pk=pk)
 
+
 class SubscribeView(LoginRequiredMixin, View):
     def post(self, request, pk):
         action = request.POST.get("action")
@@ -115,10 +120,10 @@ class SubscribeView(LoginRequiredMixin, View):
 
         return redirect("post-user-list", pk=pk)
 
-
     def get_queryset(self):
         user = self.request.user
         return Profile.objects.filter(subscribers=user)
+
 
 def about(request):
     return render(request, "blog/about.html", {"title": "About"})
