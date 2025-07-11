@@ -31,7 +31,7 @@ def create_profile(sender, instance, created, **kwargs):
         print(recipients)
         email = EmailMessage(subject, html_content, from_email, recipients)
         email.content_subtype = "html"
-        email.send(fail_silently=False) 
+        email.send(fail_silently=False)
         print(f"blog created for {instance.id}")
     else:
-        print(f"blog already exists for")
+        print(f"blog already exists for {instance.id}")

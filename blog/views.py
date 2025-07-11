@@ -2,6 +2,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.urls import reverse
+from django.shortcuts import redirect, get_object_or_404
+from django.views import View
 from django.views.generic import (
     CreateView,
     DeleteView,
@@ -81,9 +83,6 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         return reverse("page-blog")
 
-
-from django.shortcuts import redirect, get_object_or_404
-from django.views import View
 
 # def subscribe(request, pk):
 #     if request.method == "POST":
