@@ -1,7 +1,6 @@
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.urls import reverse
-from django.core.mail import EmailMessage
 
 
 from .models import Post
@@ -23,7 +22,9 @@ def create_profile(sender, instance, created, **kwargs):
             instance.title + " " + instance.content + "\n blog url: " + full_url
         )
         subject = f"Ink Sphere: {instance.title} by {instance.author.username}"
-        recipients = [profile.email for profile in instance.author.profile.subscribers.all()]
+        recipients = [
+            profile.email for profile in instance.author.profile.subscribers.all()
+        ]
         process_newsletter_task.delay(
             topic_blog=topic_blog,
             full_url=full_url,

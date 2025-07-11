@@ -5,6 +5,7 @@ from newsletter_generator.chains import Chain
 
 chain = Chain()
 
+
 @shared_task()
 def process_newsletter_task(topic_blog, full_url, subject, recipients):
     html_content = chain.run(topic_blog, full_url)

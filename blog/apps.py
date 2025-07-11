@@ -8,6 +8,6 @@ class BlogConfig(AppConfig):
     def ready(self):
         # This will ensure that the signals are imported and ready to use
         # when the app is loaded.
-        import blog.signals # noqa: F401
+        import blog.signals  # noqa: F401
 
         print("Blog app is ready and signals are imported.")
