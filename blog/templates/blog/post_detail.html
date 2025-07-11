@@ -6,7 +6,7 @@
       <div class="d-flex align-items-center mb-4">
         <img src="{{ object.author.profile.image.url }}" alt="Avatar" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
         <div>
-          <h5 class="mb-0">{{ object.author }}</h5>
+          <a href="{% url 'post-user-list' object.author.pk %}" class="mb-0 text-decoration-none d-block">{{ object.author }}</a>
           <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
         </div>
         {% if object.author == user %}

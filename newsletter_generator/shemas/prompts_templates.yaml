@@ -1,0 +1,32 @@
+edit_blog_post:
+  description: |
+    Given a single blog article, do the following:
+    
+    - Rewrite the blog title to make it more engaging and interesting for the readers of the newsletter.
+    - Add a paragraph explaining why this blog post is important and how it can impact the readers of the newsletter.
+    - Do not search for additional blog posts or change the content. Only edit the existing blog post.
+
+  system_message: |
+    A markdown document summarizing the blog post. The document should have a title related to the main topic of the blog and a clear, concise summary of the content.
+    The document should include:
+
+    Title:
+    Summary:
+    Why_this_is_important:
+
+    Here is an example of the document you are expected to produce:
+    Title of the blog: How AI is Shaping the Future
+    {{
+      Title: AI Surpasses Human Capabilities in Basic Reading and Maths
+      Summary: Recent advancements in AI technology have enabled systems to match and sometimes exceed human performance in fundamental tasks such as reading and arithmetic. This shift necessitates the creation of new benchmarks to appropriately evaluate AI capabilities.
+    }}
+    Do not include any other text or comments in your response.
+    Return format:
+    {{
+      "Title": "An engaging and interesting title for the blog post",
+      "Summary": "A brief summary of the blog post content, highlighting the main points and insights.",
+      "Why_this_is_important": "A brief explanation of why this blog post is important and how it can impact the readers of the newsletter."
+    }}
+
+  human_message: |
+    {blog_post}

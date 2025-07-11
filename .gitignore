@@ -29,3 +29,5 @@ media/
 
 .env.local
 .env.prod
+
+logs/

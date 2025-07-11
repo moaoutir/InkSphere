@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Newsletter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-top: 30px;
+        }
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+        .read-more {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .read-more a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .read-more a:hover {
+            text-decoration: underline;
+        }
+        .goodbye {
+            text-align: center;
+            margin-top: 40px;
+            color: #888;
+        }
+        .personal-message {
+            background-color: #e9f5ff;
+            padding: 15px;
+            border-left: 5px solid #007acc;
+            margin-bottom: 30px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>$blog_title</h1>
+
+        <p>$article_summary</p>
+        <p><strong>Why this is important:</strong> $why_important</p>
+
+        <div class="read-more">
+            <p>Read the full blog post:</p>
+            <a href="$url">Click here to continue reading →</a>
+        </div>
+
+        <p class="goodbye">Thank you for reading. See you in the next post!</p>
+    </div>
+</body>
+</html>
