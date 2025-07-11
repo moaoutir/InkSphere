@@ -5,13 +5,12 @@ from django.core.mail import EmailMessage
 
 
 from .models import Post
+from .tasks import process_newsletter_task
 
-from newsletter_generator.chains import Chain
 from dotenv import load_dotenv
 import os
 
 load_dotenv(".env.local")
-chain = Chain()
 
 
 @receiver(post_save, sender=Post)
@@ -23,15 +22,13 @@ def create_profile(sender, instance, created, **kwargs):
         topic_blog = (
             instance.title + " " + instance.content + "\n blog url: " + full_url
         )
-        html_content = chain.run(topic_blog, full_url)
-
         subject = f"Ink Sphere: {instance.title} by {instance.author.username}"
-        from_email = os.environ.get("EMAIL_HOST_USER")
-        recipients = [sub.email for sub in instance.author.profile.subscribers.all()]
-        print(recipients)
-        email = EmailMessage(subject, html_content, from_email, recipients)
-        email.content_subtype = "html"
-        email.send(fail_silently=False)
-        print(f"blog created for {instance.id}")
-    else:
-        print(f"blog already exists for {instance.id}")
+        recipients = [profile.email for profile in instance.author.profile.subscribers.all()]
+        process_newsletter_task.delay(
+            topic_blog=topic_blog,
+            full_url=full_url,
+            subject=subject,
+            recipients=recipients,
+        )
+    # else:
+    #     print(f"blog already exists for {instance.id}")
