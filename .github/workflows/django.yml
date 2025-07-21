@@ -67,6 +67,7 @@ jobs:
           key: ${{ secrets.KEY }}
           script: |
             whoami
+            docker stop blog-app-container || true
+            docker rm blog-app-container || true
             docker pull mouada/blog-app:1.0
-            docker compose down --volumes
-            docker compose up -d
+            docker run -d --name blog-app-container -p 8001:8001 mouada/blog-app:1.0
