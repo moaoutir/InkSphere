@@ -39,7 +39,6 @@ jobs:
     needs: test
 
     steps:
-
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
@@ -51,6 +50,6 @@ jobs:
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
-          with:
-            push: true
-            tags: mouada/blog-app:1.0
+      with:
+        push: true
+        tags: mouada/blog-app:1.0
