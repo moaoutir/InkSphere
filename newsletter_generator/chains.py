@@ -70,12 +70,12 @@ Write a blog post about the importance of learning Python for data science.
 
 if __name__ == "__main__":
     chain = Chain()
-    # output_data = chain.edit_blog_post_chain.invoke({"blog_post": example_input.strip()})
-    output_data = SummaryModel(
-        Title="The Importance of Learning Python for Data Science",
-        Summary="Python is a versatile programming language that has become the de facto standard for data science. Its simplicity and readability make it accessible for beginners, while its powerful libraries like Pandas, NumPy, and Matplotlib provide advanced capabilities for data manipulation and visualization.",
-        Why_this_is_important="Python's extensive libraries and community support make it an essential tool for data scientists, enabling them to efficiently analyze and visualize data, build machine learning models, and automate tasks.",
-    )
+    output_data = chain.edit_blog_post_chain.invoke({"blog_post": example_input.strip()})
+    # output_data = SummaryModel(
+    #     Title="The Importance of Learning Python for Data Science",
+    #     Summary="Python is a versatile programming language that has become the de facto standard for data science. Its simplicity and readability make it accessible for beginners, while its powerful libraries like Pandas, NumPy, and Matplotlib provide advanced capabilities for data manipulation and visualization.",
+    #     Why_this_is_important="Python's extensive libraries and community support make it an essential tool for data scientists, enabling them to efficiently analyze and visualize data, build machine learning models, and automate tasks.",
+    # )
     print(output_data.Title)
     html_content = Template(newsletter_template).substitute(
         blog_title=output_data.Title,
