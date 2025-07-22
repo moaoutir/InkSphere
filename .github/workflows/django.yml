@@ -41,7 +41,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: prod-env
-        path: .env.prod
+        path: .
 
     - name: run code review
       run: bash fix_code.sh
