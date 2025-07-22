@@ -23,7 +23,21 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        
+
+    - name: Create prod env
+      run: |
+        cat > .env.prod <<EOF
+        EMAIL_HOST_USER=${{ secrets.EMAIL_HOST_USER }}
+        EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }}
+        SECRET_KEY=${{ secrets.SECRET_KEY }}
+        OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+        DEBUG=False
+        DJANGO_ALLOWED_HOSTS=localhost
+        CSRF_TRUSTED_ORIGINS=https://localhost:9091,http://localhost:8001
+        DJANGO_ALLOWED_HOSTS=localhost
+        domain=http://localhost:8001
+        EOF 
+
     - name: run code review
       run: bash fix_code.sh
         
