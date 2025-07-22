@@ -68,9 +68,9 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Download prod env
-        uses: actions/download-artifact@v4
-        with:
-          name: prod-env
+      uses: actions/download-artifact@v4
+      with:
+        name: prod-env
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
