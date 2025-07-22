@@ -49,17 +49,17 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Create prod env
-      uses: SpicyPizza/create-envfile@v2.0
-      with:
-        file_name: .env.prod
-        envkey_EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
-        envkey_EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
-        envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        envkey_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        envkey_DEBUG: false
-        envkey_DJANGO_ALLOWED_HOSTS: localhost
-        envkey_CSRF_TRUSTED_ORIGINS: https://localhost:9091,http://localhost:8001
-        envkey_domain: http://localhost:8001
+      run: |
+        touch .env.prod
+        echo "EMAIL_HOST_USER=${{ secrets.EMAIL_HOST_USER }}" >> .env.prod
+        echo "EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }}" >> .env.prod
+        echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> .env.prod
+        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env.prod
+        echo "DEBUG=false" >> .env.prod
+        echo "DJANGO_ALLOWED_HOSTS=localhost" >> .env.prod
+        echo "CSRF_TRUSTED_ORIGINS=https://localhost:9091,http://localhost:8001" >> .env.prod
+        echo "DOMAIN=http://localhost:8001" >> .env.prod
+        cat .env.prod
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
