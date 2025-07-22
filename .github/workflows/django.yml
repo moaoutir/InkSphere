@@ -37,6 +37,12 @@ jobs:
         envkey_CSRF_TRUSTED_ORIGINS: https://localhost:9091,http://localhost:8001
         envkey_domain: http://localhost:8001
 
+    - name: Upload env file
+    - uses: actions/upload-artifact@v4
+      with:
+        name: prod-env
+        path: .env.prod
+
     - name: run code review
       run: bash fix_code.sh
         
@@ -61,9 +67,10 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Retrieve env file from test job
-      run: |
-        cp ../test/.env.prod .env.prod
+    - name: Download prod env
+        uses: actions/download-artifact@v4
+        with:
+          name: prod-env
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
