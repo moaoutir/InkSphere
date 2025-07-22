@@ -38,7 +38,7 @@ jobs:
         envkey_domain: http://localhost:8001
 
     - name: Upload env file
-    - uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v4
       with:
         name: prod-env
         path: .env.prod
