@@ -35,7 +35,6 @@ jobs:
         DEBUG: False
         DJANGO_ALLOWED_HOSTS: localhost
         CSRF_TRUSTED_ORIGINS: https://localhost:9091,http://localhost:8001
-        DJANGO_ALLOWED_HOSTS: localhost
         domain: http://localhost:8001
 
     - name: run code review
@@ -65,7 +64,7 @@ jobs:
     - name: Retrieve env file from test job
       run: |
         cp ../test/.env.prod .env.prod
-        
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
       with:
@@ -87,5 +86,6 @@ jobs:
             whoami
             docker stop blog-app-container || true
             docker rm blog-app-container || true
+            docker rmi mouada/blog-app:1.0 || true
             docker pull mouada/blog-app:1.0
             docker run -d --name blog-app-container -p 8001:8001 mouada/blog-app:1.0
