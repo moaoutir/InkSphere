@@ -9,7 +9,10 @@ import yaml
 import os
 from dotenv import load_dotenv
 
-load_dotenv(".env.local")
+
+dotenv_path = os.path.join(settings.BASE_DIR, ".env.local")
+load_dotenv(dotenv_path)
+
 prompt_path = os.path.join(
     settings.BASE_DIR, "newsletter_generator", "shemas", "prompts_templates.yaml"
 )

@@ -14,7 +14,6 @@ load_dotenv(".env.local")
 
 @receiver(post_save, sender=Post)
 def create_profile(sender, instance, created, **kwargs):
-    if created:
         domain = os.environ.get("domain")
         post_url = reverse("post-detail", kwargs={"pk": instance.pk})
         full_url = domain.rstrip("/") + post_url
@@ -31,5 +30,3 @@ def create_profile(sender, instance, created, **kwargs):
             subject=subject,
             recipients=recipients,
         )
-    # else:
-    #     print(f"blog already exists for {instance.id}")
