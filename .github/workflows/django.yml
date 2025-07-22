@@ -28,14 +28,14 @@ jobs:
       uses: SpicyPizza/create-envfile@v2.0
       with:
         file_name: .env.prod
-        EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
-        EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        DEBUG: False
-        DJANGO_ALLOWED_HOSTS: localhost
-        CSRF_TRUSTED_ORIGINS: https://localhost:9091,http://localhost:8001
-        domain: http://localhost:8001
+        envkey_EMAIL_HOST_USER: ${{ secrets.EMAIL_HOST_USER }}
+        envkey_EMAIL_HOST_PASSWORD: ${{ secrets.EMAIL_HOST_PASSWORD }}
+        envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        envkey_OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        envkey_DEBUG: false
+        envkey_DJANGO_ALLOWED_HOSTS: localhost
+        envkey_CSRF_TRUSTED_ORIGINS: https://localhost:9091,http://localhost:8001
+        envkey_domain: http://localhost:8001
 
     - name: run code review
       run: bash fix_code.sh
